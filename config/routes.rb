@@ -1,8 +1,11 @@
 Sharebox::Application.routes.draw do
+  resources :assets
+
   get "home/index"
 
   devise_for :users
 
+  match 'assets/get/:id' => "assets#get", :as => 'download'
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

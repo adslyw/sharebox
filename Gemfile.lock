@@ -1,5 +1,5 @@
 GEM
-  remote: https://rubygems.org/
+  remote: http://ruby.sdutlinux.org/
   specs:
     actionmailer (3.2.12)
       actionpack (= 3.2.12)
@@ -31,6 +31,10 @@ GEM
     arel (3.0.3)
     bcrypt (3.1.7)
     builder (3.0.4)
+    climate_control (0.0.3)
+      activesupport (>= 3.0)
+    cocaine (0.5.4)
+      climate_control (>= 0.0.3, < 1.0)
     coffee-rails (3.2.2)
       coffee-script (>= 2.2.0)
       railties (~> 3.2.0)
@@ -57,11 +61,19 @@ GEM
       i18n (>= 0.4.0)
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
+    metaclass (0.0.4)
     mime-types (1.25.1)
+    mocha (1.1.0)
+      metaclass (~> 0.0.1)
     multi_json (1.10.1)
     mysql2 (0.3.16)
     nifty-generators (0.4.6)
     orm_adapter (0.5.0)
+    paperclip (2.8.0)
+      activerecord (>= 2.3.0)
+      activesupport (>= 2.3.2)
+      cocaine (>= 0.0.2)
+      mime-types
     polyglot (0.3.5)
     rack (1.4.5)
     rack-cache (1.2)
@@ -118,8 +130,10 @@ DEPENDENCIES
   coffee-rails (~> 3.2.1)
   devise
   jquery-rails
+  mocha
   mysql2
   nifty-generators
+  paperclip (~> 2.3)
   rails (= 3.2.12)
   sass-rails (~> 3.2.3)
   uglifier (>= 1.0.3)

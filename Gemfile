@@ -1,4 +1,4 @@
-source 'https://rubygems.org'
+source 'http://ruby.sdutlinux.org'
 
 gem 'rails', '3.2.12'
 
@@ -8,6 +8,9 @@ gem 'rails', '3.2.12'
 gem 'mysql2'
 gem 'devise'
 gem 'nifty-generators', :group => :development
+
+#for uploading files
+gem "paperclip", "~> 2.3"
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
@@ -36,3 +39,5 @@ gem 'jquery-rails'
 
 # To use debugger
 # gem 'debugger'
+
+gem "mocha", :group => :test

@@ -1,0 +1,7 @@
+<%= form_for @asset, :html => {:multipart => true} do |f| %>
+  <%= f.error_messages %>
+      <p>
+        <%= f.file_field :uploaded_file %>
+      </p>
+  <p><%= f.submit "Upload" %></p>
+<% end %>

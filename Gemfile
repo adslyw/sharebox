@@ -9,6 +9,7 @@ gem 'mysql2'
 gem 'devise'
 gem 'nifty-generators', :group => :development
 gem 'acts_as_tree'
+gem 'font-awesome-sass'
 #for uploading files
 gem "paperclip", "~> 2.3"
 # Gems used only for assets and not required

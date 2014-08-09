@@ -8,7 +8,7 @@ gem 'rails', '3.2.12'
 gem 'mysql2'
 gem 'devise'
 gem 'nifty-generators', :group => :development
-
+gem 'acts_as_tree'
 #for uploading files
 gem "paperclip", "~> 2.3"
 # Gems used only for assets and not required

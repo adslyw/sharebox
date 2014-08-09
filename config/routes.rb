@@ -1,4 +1,6 @@
 Sharebox::Application.routes.draw do
+  resources :folders
+
   resources :assets
 
   get "home/index"

@@ -26,6 +26,7 @@ class HomeController < ApplicationController
       shared_user = User.find_by_email(email_address)
       @shared_folder.message = params[:message]
       @shared_folder.save
+      UserMailer.invitation_to_share(@shared_folder).deliver
       respond_to do |format|
        format.js
       end

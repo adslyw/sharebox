@@ -11,6 +11,7 @@ Sharebox::Application.routes.draw do
   match 'browse/:folder_id' => "home#browse", :as => 'browse'
   match "browse/:folder_id/new_folder" => "folders#new", :as => "new_sub_folder"
   match 'browse/:folder_id/new_file' => 'assets#new', :as => 'new_sub_file'
+  match 'browse/:folder_id/rename'  => 'folders#edit', :as => 'rename_folder'
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

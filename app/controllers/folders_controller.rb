@@ -30,13 +30,20 @@ class FoldersController < ApplicationController
   end
 
   def edit
-    @folder = current_user.folders.find(params[:id])
+    @folder = current_user.folders.find(params[:folder_id])
+    @current_folder = @folder.parent
   end
 
   def update
     @folder = current_user.folders.find(params[:id])
+    @parrent_folder = @folder.parent
     if @folder.update_attributes(params[:folder])
-      redirect_to @folder, :notice  => "Successfully updated folder."
+      flash[:notice] = "Successfully updated folder."
+      if @parrent_folder
+        redirect_to browse_path(@parrent_folder)
+      else
+        redirect_to root_url
+      end      
     else
       render :action => 'edit'
     end
@@ -44,7 +51,13 @@ class FoldersController < ApplicationController
 
   def destroy
     @folder = current_user.folders.find(params[:id])
+    @parent_folder = @folder.parent
     @folder.destroy
-    redirect_to folders_url, :notice => "Successfully destroyed folder."
+    flash[:notice] = "Successfully destroyed folder."
+    if @parent_folder
+      redirect_to browse_path(@parent_folder)
+    else
+      redirect_to root_url
+    end
   end
 end

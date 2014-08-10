@@ -44,8 +44,14 @@ class AssetsController < ApplicationController
 
   def destroy
     @asset = current_user.assets.find(params[:id])
+    @parrent_folder = @asset.folder
     @asset.destroy
-    redirect_to assets_url, :notice => "Successfully destroyed asset."
+    flash[:notice] = "Successfully destroyed asset."
+    if @parrent_folder
+      redirect_to browse_path(@parrent_folder)
+    else
+      redirect_to root_url
+    end
   end
 
   def get

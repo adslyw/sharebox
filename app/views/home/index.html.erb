@@ -19,7 +19,7 @@
             <div class="actions">
             </div>
         </div>
-    <% end %> 
+    <% end %>
     <!-- Listing Folders -->
     <% @folders.each do |folder| %>
         <div class="asset_details <%= folder.shared? ? 'shared_folder' : 'folder' %>" id="folder_<%= folder.id %>">
@@ -28,14 +28,14 @@
             <div class="file_last_updated"> - </div>
             <div class="actions">
                  <div class="share">
-                     <%= link_to "Share", "#", :folder_id => folder.id, :folder_name => folder.name %>
-                 </div>
-                 <div class="rename">
-                     <%= link_to "Rename", rename_folder_path(folder) %>
-                 </div>
-                 <div class="delete">
-                     <%= link_to "Delete", folder, :confirm => 'Are you sure to delete the folder and all of its contents?', :method => :delete %>
-                 </div>
+                      <%= link_to "Share", "#", :folder_id => folder.id, :folder_name => folder.name unless @is_this_folder_being_shared%>
+                  </div>
+                  <div class="rename">
+                      <%= link_to "Rename", rename_folder_path(folder) unless @is_this_folder_being_shared%>
+                  </div>
+                  <div class="delete">
+                      <%= link_to "Delete", folder, :confirm => 'Are you sure to delete the folder and all of its contents?', :method => :delete unless @is_this_folder_being_shared%>
+                  </div>
              </div>
         </div>
     <% end %>
@@ -50,22 +50,26 @@
                <%= link_to "Download", download_url(asset) %>
              </div>
              <div class="delete">
-                 <%= link_to "Delete", asset, :confirm => 'Are you sure?', :method => :delete %>
+                 <%= link_to "Delete", asset, :confirm => 'Are you sure?', :method => :delete unless @is_this_folder_being_shared%>
              </div>
            </div>
        </div>
     <% end %>
    </div>
    <div id="menu">
-       <ul id= "top_menu">
-           <% if @current_folder %>
-               <li><%= link_to "Upload", new_sub_file_path(@current_folder) %></li>
-               <li><%= link_to "New Folder", new_sub_folder_path(@current_folder) %></li>
-           <% else %>
-               <li><%= link_to "Upload", new_asset_path %></li>
-               <li><%= link_to "New Folder", new_folder_path %></li>
-           <% end %>
-       </ul>
+     <% unless @is_this_folder_being_shared %>
+        <ul id= "top_menu">
+            <% if @current_folder %>
+                <li><%= link_to "Upload", new_file_path(@current_folder) %></li>
+                <li><%= link_to "New Folder", new_sub_folder_path(@current_folder) %></li>
+            <% else %>
+                <li><%= link_to "Upload", new_asset_path %></li>
+                <li><%= link_to "New Folder", new_folder_path %></li>
+            <% end %>
+        </ul>
+      <% else %>
+          <h3>This folder is being shared to you by <%= @current_folder.user.name %></h3>
+      <% end %>
     </div>
     <div id="invitation_form" title="Invite others to share" style="display:none">
       <%= form_tag '/home/share' do %>

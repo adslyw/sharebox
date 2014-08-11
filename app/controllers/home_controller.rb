@@ -8,12 +8,12 @@ class HomeController < ApplicationController
     end
   end
   def browse
-    @current_folder = current_user.folders.find(params[:folder_id])
-    @is_this_folder_being_shared = false if @current_folder #just an instance variable to help hiding buttons on View
+     @current_folder = current_user.folders.find_by_id(params[:folder_id])
+     @is_this_folder_being_shared = false if @current_folder #just an instance variable to help hiding buttons on View
 
     #if not found in own folders, find it in being_shared_folders
     if @current_folder.nil?
-      folder = Folder.find_by_id(params[:folder_id])
+      folder = Folder.find(params[:folder_id])
 
       @current_folder ||= folder if current_user.has_share_access?(folder)
       @is_this_folder_being_shared = true if @current_folder #just an instance variable to help hiding buttons on View

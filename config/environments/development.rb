@@ -36,4 +36,15 @@ Sharebox::Application.configure do
   config.assets.debug = true
 
   config.action_mailer.default_url_options = { :host => 'localhost:3000' }
+
+  #mailer config
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+    :address              => 'smtp.163.com',
+    :port                 => 25,
+    :domain               => '163.com',
+    :user_name            => 'user',
+    :password             => 'pass',
+    :authentication       => 'login',
+    :enable_starttls_auto => true  }
 end

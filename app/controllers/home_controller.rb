@@ -40,7 +40,7 @@ class HomeController < ApplicationController
       @shared_folder.shared_user_id =shared_user.id if shared_user
       @shared_folder.message = params[:message]
       @shared_folder.save
-      #UserMailer.invitation_to_share(@shared_folder).deliver
+      UserMailer.delay.invitation_to_share(@shared_folder)
       respond_to do |format|
        format.js
       end

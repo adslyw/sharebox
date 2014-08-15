@@ -13,6 +13,7 @@ gem 'font-awesome-sass'
 #for uploading files
 gem "paperclip", "~> 2.3"
 gem 'jquery-ui-rails'
+gem 'delayed_job_active_record'
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do

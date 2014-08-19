@@ -56,7 +56,9 @@
 
   def get
     asset = current_user.assets.find_by_id(params[:id])
-    asset ||= Asset.find(params[:id]) if current_user.has_share_access?(Asset.find_by_id(params[:id]).folder)
+    if asset.nil?
+       asset ||= Asset.find(params[:id]) if current_user.has_share_access?(Asset.find_by_id(params[:id]).folder)
+    end
     if asset
        send_file asset.uploaded_file.path, :type => asset.uploaded_file_content_type
     else

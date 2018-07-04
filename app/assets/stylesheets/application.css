@@ -11,9 +11,9 @@
  *= require_self
  *= require_tree .
  *= require font-awesome
- *= require jquery.ui.all
+ *= require jquery-ui
  */
-body {
+box-sizing:ody {
   background-color: #EFEFEF;
   font-family: "Lucida Grande","Verdana","Arial","Bitstream Vera Sans",sans-serif;
   font-size: 14px;

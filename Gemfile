@@ -1,15 +1,15 @@
-source 'http://ruby.sdutlinux.org'
+source 'https://gems.ruby-china.org/'
 
-gem 'rails', '3.2.12'
+gem 'rails', '3.2.22'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
-gem 'mysql2'
-gem 'devise'
+gem 'mysql2', '0.3.21'
+gem 'devise', '~> 3.2.0'
 gem 'nifty-generators', :group => :development
 gem 'acts_as_tree'
-gem 'font-awesome-sass'
+gem 'font-awesome-rails'
 #for uploading files
 gem "paperclip", "~> 2.3"
 gem 'jquery-ui-rails'
